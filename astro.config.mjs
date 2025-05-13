@@ -32,6 +32,13 @@ export default defineConfig({
 			en: 'Miscellaneous'
 		  },
 		  autogenerate: { directory: 'misc' }
+		},
+		{
+			label: 'Remnawave',
+			translations: {
+			  en: 'Remnawave'
+			},
+			autogenerate: { directory: 'Remnawave' }
 		}
 	  ],	  
       social: [
