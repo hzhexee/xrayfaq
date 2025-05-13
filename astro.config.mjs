@@ -1,26 +1,50 @@
-// @ts-check
 import { defineConfig } from 'astro/config';
 import starlight from '@astrojs/starlight';
+import sitemap from '@astrojs/sitemap';
 
-// https://astro.build/config
 export default defineConfig({
-	integrations: [
-		starlight({
-			title: 'My Docs',
-			social: [{ icon: 'github', label: 'GitHub', href: 'https://github.com/withastro/starlight' }],
-			sidebar: [
-				{
-					label: 'Guides',
-					items: [
-						// Each item here is one entry in the navigation menu.
-						{ label: 'Example Guide', slug: 'guides/example' },
-					],
-				},
-				{
-					label: 'Reference',
-					autogenerate: { directory: 'reference' },
-				},
-			],
-		}),
-	],
+  site: 'https://xraycore.org',
+  output: 'static',
+  trailingSlash: 'always',
+  integrations: [
+    starlight({
+      title: 'FAQ',
+      defaultLocale: 'ru',
+	  customCss: ['/src/styles/custom.css'],
+      locales: {
+        ru: {
+          label: 'Русский',
+          lang: 'ru',
+          dir: 'ltr',
+          translation: () => import('./src/i18n/ru.json'),
+        },
+        en: {
+          label: 'English',
+          lang: 'en',
+          dir: 'ltr',
+          translation: () => import('./src/i18n/en.json'),
+        }
+      },
+	  sidebar: [
+		{
+		  label: 'Разное',
+		  translations: {
+			en: 'Miscellaneous'
+		  },
+		  autogenerate: { directory: 'misc' }
+		}
+	  ],	  
+      social: [
+        {
+          icon: 'github',
+          label: 'GitHub',
+          href: 'https://github.com/TheMelbine/xrayfaq'
+        }
+      ]
+    }),
+    sitemap(),
+  ],
+  markdown: {
+    syntaxHighlight: 'shiki',
+  }
 });
