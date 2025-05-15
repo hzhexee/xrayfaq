@@ -1,0 +1,46 @@
+---
+title: Типовые ошибки
+description: Помощь в решении распространённых проблем при работе с Remnawave
+---
+import { Steps } from '@astrojs/starlight/components';
+
+<div className="server-scripts-details">
+<details>
+  <summary>После завершение [миграции](https://github.com/remnawave/migrate/) в консоли пишет "Migration completed successfully", но в панели ничего не появляется. Remnawave установлен через скрипт от eGames.</summary>
+  <Steps>
+
+1. Откройте в редакторе конфигурацию nginx:
+
+   ```bash
+   sudo nano /opt/remnawave/nginx.conf
+   ```
+
+2. Найдите и закомментируйте выделенные строки, добавив `#` в начало строки как показанно ниже.
+    ```diff {1-3}
+      #  if ($authorized = 0) {
+      #     return 404;
+      #  }
+        proxy_http_version 1.1;
+        proxy_pass http://remnawave;
+        proxy_set_header Host $host;
+        proxy_set_header Upgrade $http_upgrade;
+        proxy_set_header Connection $connection_upgrade;
+        proxy_set_header X-Real-IP $remote_addr;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+        proxy_set_header X-Forwarded-Proto $scheme;
+        proxy_set_header X-Forwarded-Host $host;
+        proxy_set_header X-Forwarded-Port $server_port;
+        proxy_send_timeout 60s;
+        proxy_read_timeout 60s;
+    }
+    ```
+3. Проверьте конфиг nginx на ошибки и перезапустите nginx.
+    ```bash
+    docker exec remnawave-nginx sh -c "nginx -t && nginx -s reload"
+    ```
+4. После повторной миграции верните строки в исходное состояние (уберите #) и выполните шаг 3 повторно, перезапустив nginx.
+</Steps>
+
+</details>
+</div>
+
