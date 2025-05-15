@@ -4,3 +4,22 @@ select.astro-4yphtoen {
   width: auto;
 
 }
+
+.server-details-toggle {
+  top: 60px;
+  position: fixed;
+  z-index: 10000;
+  min-width: 40rem;
+  padding: 0em 0em 0.1em 0em;
+  border-radius: 8px;
+  background: var(--sl-color-text-accent);
+  color: var(--sl-color-text-invert);
+  border: none;
+  font: inherit;
+  font-size: 1rem;
+  cursor: pointer;
+}
+.server-details-toggle:hover {
+  background: var(--sl-color-accent-high);
+  color: var(--sl-color-accent-low);
+}

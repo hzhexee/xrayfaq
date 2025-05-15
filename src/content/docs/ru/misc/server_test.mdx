@@ -1,0 +1,521 @@
+---
+title: Cкрипты для теста сервера
+description: Список скриптов, применяемых для диагностики сервера.
+---
+import ToggleAllDetailsButton from '../../../../components/ToggleDatails'
+
+
+<ToggleAllDetailsButton
+  className="server-details-toggle"
+  targetClass="server-scripts-details"
+  expandLabel="Развернуть все примеры вывода"
+  collapseLabel="Свернуть все примеры вывода"
+  client:load
+/>
+Ниже приведён список скриптов, применяемых для диагностики
+
+### 1. Speedtest — тест скорости соединения
+
+Скрипты, запускающие проверку скорости интернета до заданных серверов через утилиту **Speedtest-CLI**.
+
+#### Проверка до российских серверов
+
+```bash
+bash <(curl -sL https://raw.githubusercontent.com/jomertix/server-scripts/master/speedtest/countries/speedtest_ru.sh)
+```
+<div className="server-scripts-details">
+<details>
+  <summary>Пример вывода</summary>
+```bash
+----------- A Bench.sh Script By Teddysun | Russian Regions ----------
+ Version            : v2024-11-05
+ More scripts       : https://github.com/jomertix/server-scripts
+----------------------------------------------------------------------
+ CPU Model          : 12th Gen Intel(R) Core(TM) i9-12900K
+ CPU Cores          : 1 @ 3187.200 MHz
+ CPU Cache          : 16384 KB
+ AES-NI             : ✓ Enabled
+ VM-x/AMD-V         : ✓ Enabled
+ Total Disk         : 30.4 GB (14.6 GB Used)
+ Total Mem          : 1.9 GB (479.6 MB Used)
+ Total Swap         : 1024.0 MB (0 Used)
+ System uptime      : 19 days, 3 hour 17 min
+ Load average       : 0.00, 0.00, 0.00
+ OS                 : Debian GNU/Linux 12
+ Arch               : x86_64 (64 Bit)
+ Kernel             : 6.9.12-x64v3-xanmod1
+ TCP CC             : bbr
+ Virtualization     : KVM
+ IPv4/IPv6          : ✓ Online / ✓ Online
+ Organization       : AS210644 AEZA INTERNATIONAL LTD
+ Location           : Frankfurt am Main / DE
+ Region             : Hesse
+----------------------------------------------------------------------
+ I/O Speed(1st run) : 801 MB/s
+ I/O Speed(2nd run) : 2.4 GB/s
+ I/O Speed(3rd run) : 2.6 GB/s
+ I/O Speed(average) : 1973.7 MB/s
+----------------------------------------------------------------------
+ Node Name        Upload Speed      Download Speed      Latency     
+ Speedtest.net    205.97 Mbps       223.98 Mbps         6.25 ms     
+ MTS, Moscow      205.05 Mbps       230.52 Mbps         52.04 ms    
+ Beeline, Kaluga  207.21 Mbps       95.01 Mbps          51.37 ms    
+ RCom, Penza      204.11 Mbps       219.97 Mbps         62.25 ms    
+ RCom, AST        205.93 Mbps       214.81 Mbps         71.89 ms    
+ DOM.RU, Perm     203.23 Mbps       208.92 Mbps         64.98 ms    
+ Tele2, EKB       204.14 Mbps       221.00 Mbps         73.31 ms    
+ Tele2, NIZH      206.94 Mbps       236.04 Mbps         58.37 ms    
+ Tele2, NVS       200.88 Mbps       216.28 Mbps         93.42 ms    
+ ACom, VLD        82.56 Mbps        221.42 Mbps         150.00 ms   
+ Tatcom, Kazan    206.26 Mbps       217.16 Mbps         62.31 ms    
+----------------------------------------------------------------------
+ Finished in        : 4 min 33 sec
+ Timestamp          : 2025-05-15 16:08:58 CEST
+----------------------------------------------------------------------
+```
+
+</details>
+</div>
+
+#### Проверка до серверов СКФО
+
+```bash
+bash <(curl -s storage.umager.ru/caucasus.sh)
+```
+<div className="server-scripts-details">
+  <details>
+    <summary>Пример вывода</summary>
+  ```bash
+  -------------------- A Bench.sh Script By Teddysun // modify by phookoo -------------------
+  Version            : v2024-09-29
+  Usage              : bash <(curl -s storage.umager.ru/caucasus.sh)
+  ----------------------------------------------------------------------
+  CPU Model          : 12th Gen Intel(R) Core(TM) i9-12900K
+  CPU Cores          : 1 @ 3187.200 MHz
+  CPU Cache          : 16384 KB
+  AES-NI             : ✓ Enabled
+  VM-x/AMD-V         : ✓ Enabled
+  Total Disk         : 30.4 GB (16.2 GB Used)
+  Total Mem          : 1.9 GB (506.5 MB Used)
+  Total Swap         : 1024.0 MB (268.0 KB Used)
+  System uptime      : 19 days, 4 hour 57 min
+  Load average       : 0.00, 0.00, 0.00
+  OS                 : Debian GNU/Linux 12
+  Arch               : x86_64 (64 Bit)
+  Kernel             : 6.9.12-x64v3-xanmod1
+  TCP CC             : bbr
+  Virtualization     : KVM
+  IPv4/IPv6          : ✓ Online / ✓ Online
+  Organization       : AS210644 AEZA INTERNATIONAL LTD
+  Location           : Frankfurt am Main / DE
+  Region             : Hesse
+  ----------------------------------------------------------------------
+  I/O Speed(1st run) : 1.2 GB/s
+  I/O Speed(2nd run) : 1.7 GB/s
+  I/O Speed(3rd run) : 2.3 GB/s
+  I/O Speed(average) : 1774.9 MB/s
+  ----------------------------------------------------------------------
+  Node Name                         Upload Speed      Download Speed      Latency     
+  Speedtest.net                     204.65 Mbps       224.30 Mbps         6.20 ms     
+  Rostov-on-Don, RT                 201.18 Mbps       199.82 Mbps         72.22 ms    
+  Vladikavkaz, Global Alania        204.51 Mbps       212.18 Mbps         79.96 ms    
+  Vladikavkaz, VideoLine            203.94 Mbps       211.77 Mbps         74.24 ms    
+  Grozny, Electrosvyaz              202.68 Mbps       209.26 Mbps         69.30 ms    
+  Makhachkala, 05kom                23.04 Mbps        15.15 Mbps          230.50 ms   
+  ----------------------------------------------------------------------
+  Finished in        : 2 min 29 sec
+  Timestamp          : 2025-05-15 17:46:45 CEST
+  Follow             : https://t.me/hostobzor
+  Modify Bench by    : https://t.me/phookoo
+  ----------------------------------------------------------------------
+  ```
+
+  </details>
+</div>
+#### Проверка до зарубежных серверов
+
+```bash
+bash <(curl -sL bench.sh )
+```
+<div className="server-scripts-details">
+  <details>
+    <summary>Пример вывода</summary>
+  ```bash
+ Usage              : wget -qO- bench.sh | bash
+----------------------------------------------------------------------
+ CPU Model          : 12th Gen Intel(R) Core(TM) i9-12900K
+ CPU Cores          : 1 @ 3187.200 MHz
+ CPU Cache          : 16384 KB
+ AES-NI             : ✓ Enabled
+ VM-x/AMD-V         : ✓ Enabled
+ Total Disk         : 30.4 GB (16.2 GB Used)
+ Total Mem          : 1.9 GB (511.8 MB Used)
+ Total Swap         : 1024.0 MB (268.0 KB Used)
+ System uptime      : 19 days, 5 hour 26 min
+ Load average       : 0.00, 0.00, 0.00
+ OS                 : Debian GNU/Linux 12
+ Arch               : x86_64 (64 Bit)
+ Kernel             : 6.9.12-x64v3-xanmod1
+ TCP CC             : bbr
+ Virtualization     : KVM
+ IPv4/IPv6          : ✓ Online / ✓ Online
+ Organization       : AS210644 AEZA INTERNATIONAL LTD
+ Location           : Frankfurt am Main / DE
+ Region             : Hesse
+----------------------------------------------------------------------
+ I/O Speed(1st run) : 1.2 GB/s
+ I/O Speed(2nd run) : 2.4 GB/s
+ I/O Speed(3rd run) : 2.2 GB/s
+ I/O Speed(average) : 1979.7 MB/s
+----------------------------------------------------------------------
+ Node Name        Upload Speed      Download Speed      Latency     
+ Paris, FR        202.78 Mbps       225.55 Mbps         25.73 ms    
+ Amsterdam, NL    204.49 Mbps       220.95 Mbps         12.29 ms    
+ Beijing, CN      157.13 Mbps       241.61 Mbps         327.09 ms   
+ Hong Kong, CN    199.75 Mbps       210.17 Mbps         172.44 ms   
+ Singapore, SG    192.08 Mbps       254.09 Mbps         249.53 ms   
+----------------------------------------------------------------------
+ Finished in        : 2 min 16 sec
+ Timestamp          : 2025-05-15 18:15:19 CEST
+----------------------------------------------------------------------
+  ```
+
+  </details>
+</div>
+
+### 2. YABS — комплексный тест сервера (CPU, диск, сеть)
+
+Скрипт автоматизирует запуск популярных бенчмарков для комплексной проверки сервера: диск (fio), сеть (iperf3), CPU/память (Geekbench).
+
+```bash
+bash <(curl -sL yabs.sh) -4
+```
+
+<div className="server-scripts-details">
+  <details>
+    <summary>Пример вывода</summary>
+  ```bash
+# ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## #
+#              Yet-Another-Bench-Script              #
+#                     v2023-04-23                    #
+# https://github.com/masonr/yet-another-bench-script #
+# ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## ## #
+
+Sun 23 Apr 2023 01:41:14 PM EDT
+
+Basic System Information:
+---------------------------------
+Uptime     : 342 days, 18 hours, 35 minutes
+Processor  : Intel(R) Xeon(R) E-2276G CPU @ 3.80GHz
+CPU cores  : 12 @ 4693.667 MHz
+AES-NI     : ✔ Enabled
+VM-x/AMD-V : ✔ Enabled
+RAM        : 15.5 GiB
+Swap       : 14.9 GiB
+Disk       : 864.5 GiB
+Distro     : Ubuntu 20.04.6 LTS
+Kernel     : 5.4.0-110-generic
+VM Type    : NONE
+IPv4/IPv6  : ✔ Online / ✔ Online
+
+IPv6 Network Information:
+---------------------------------
+ISP        : Clouvider Limited
+ASN        : AS62240 Clouvider
+Host       : USA Network
+Location   : New York, New York (NY)
+Country    : United States
+
+fio Disk Speed Tests (Mixed R/W 50/50):
+---------------------------------
+Block Size | 4k            (IOPS) | 64k           (IOPS)
+  ------   | ---            ----  | ----           ----
+Read       | 405.41 MB/s (101.3k) | 407.96 MB/s   (6.3k)
+Write      | 406.48 MB/s (101.6k) | 410.11 MB/s   (6.4k)
+Total      | 811.90 MB/s (202.9k) | 818.08 MB/s  (12.7k)
+           |                      |
+Block Size | 512k          (IOPS) | 1m            (IOPS)
+  ------   | ---            ----  | ----           ----
+Read       | 380.21 MB/s    (742) | 394.55 MB/s    (385)
+Write      | 400.41 MB/s    (782) | 420.82 MB/s    (410)
+Total      | 780.62 MB/s   (1.5k) | 815.37 MB/s    (795)
+
+iperf3 Network Speed Tests (IPv4):
+---------------------------------
+Provider        | Location (Link)           | Send Speed      | Recv Speed      | Ping
+-----           | -----                     | ----            | ----            | ----
+Clouvider       | London, UK (10G)          | 1.61 Gbits/sec  | 2.39 Gbits/sec  | 77.5 ms
+Scaleway        | Paris, FR (10G)           | busy            | 2.25 Gbits/sec  | 83.3 ms
+Clouvider       | NYC, NY, US (10G)         | 9.10 Gbits/sec  | 8.85 Gbits/sec  | 1.21 ms
+
+iperf3 Network Speed Tests (IPv6):
+---------------------------------
+Provider        | Location (Link)           | Send Speed      | Recv Speed      | Ping
+-----           | -----                     | ----            | ----            | ----
+Clouvider       | London, UK (10G)          | 2.00 Gbits/sec  | 21.1 Mbits/sec  | 76.7 ms
+Scaleway        | Paris, FR (10G)           | 2.66 Gbits/sec  | 1.56 Gbits/sec  | 75.9 ms
+Clouvider       | NYC, NY, US (10G)         | 3.42 Gbits/sec  | 7.80 Gbits/sec  | 1.15 ms
+
+Geekbench 4 Benchmark Test:
+---------------------------------
+Test            | Value
+                |
+Single Core     | 5949
+Multi Core      | 23425
+Full Test       | https://browser.geekbench.com/v4/cpu/16746501
+
+YABS completed in 12 min 49 sec
+
+  ```
+
+  </details>
+</div>
+
+### 3. IP Check Place — анализ IP-адреса
+
+Проверяет IP по разным геобазам, выявляет наличие в спам-реестрах и оценивает доступность ключевых интернет-сервисов.
+
+```bash
+bash <(curl -sL https://raw.githubusercontent.com/jomertix/server-scripts/refs/heads/master/checkers/ip_quality.sh)
+```
+<div className="server-scripts-details">
+  <details>
+    <summary>Пример вывода</summary>
+  ```bash
+########################################################################
+                  IP QUALITY CHECK REPORT: 217.144.*.*
+bash <(curl -sL https://raw.githubusercontent.com/jomertix/server-scripts/refs/heads/master/checkers/ip_quality.sh)
+               https://github.com/jomertix/server-scripts
+       Report Time: 2025-05-15 16:55:30 UTC  Version: v2024-11-09
+########################################################################
+1. Basic Information (Maxmind Database)
+ASN:                    AS210644
+Organization:           Aeza International LTD
+Location:               8°40′56″E, 50°6′39″N
+Map:                    https://maps.google.com/?q=50.1109221,8.6821267
+City:                   Frankfurt
+Actual Region:          [DE]Germany, [EU]Europe
+Time Zone:              Europe/Berlin
+IP Type:                 Geo-discrepant 
+2. IP Type
+Database:     IPinfo    ipregistry    ipapi     AbuseIPDB  IP2LOCATION 
+Usage:       Hosting     Hosting     Hosting   
+Company:     Hosting     Hosting   
+3. Risk Score
+Levels:         VeryLow     Low      Medium      High   VeryHigh
+SCAMALYTICS:             18|Low
+ipapi:                       1.17%|Elevated
+AbuseIPDB:                                |
+Cloudflare:    0|Low
+DB-IP:          |Low
+4. Risk Factors
+DB:  IP2LOCATION ipapi ipregistry IPQS SCAMALYTICS ipdata IPinfo IPWHOIS
+Region:   [DE]    [DE]     N/A     N/A    [DE]     N/A    [DE]    [DE]
+Proxy:     No      No      N/A     N/A     No      N/A     No      No 
+Tor:       No      No      N/A     N/A     No      N/A     No      No 
+VPN:       No      No      N/A     N/A     No      N/A     No      No 
+Server:    Yes     Yes     N/A     N/A     No      N/A     Yes     No 
+Abuser:    No      No      N/A     N/A     N/A     N/A     N/A     N/A
+Robot:     No      No      N/A     N/A     No      N/A     N/A     N/A
+5. Accessibility check for media and AI services
+Service:  TikTok   Disney+  Netflix Youtube  AmazonPV  Spotify  ChatGPT 
+Status:     Yes     Block   NF.Only    Yes      Yes     Block     Yes   
+Region:    [DE]              [DE]     [DE]     [DE]              [NL]   
+Type:     Native            Native   Native   Native            Native  
+6. Email service availability and blacklist detection
+Local Port 25: Blocked
+DNSBL database:   Active 439   Clean 424   Marked 15   Blacklisted 0
+========================================================================
+
+########################################################################
+           IP QUALITY CHECK REPORT: 2a0b:4140:491d:*:*:*:*:*
+bash <(curl -sL https://raw.githubusercontent.com/jomertix/server-scripts/refs/heads/master/checkers/ip_quality.sh)
+               https://github.com/jomertix/server-scripts
+       Report Time: 2025-05-15 16:55:30 UTC  Version: v2024-11-09
+########################################################################
+1. Basic Information (Maxmind Database)
+ASN:                    AS210644
+Organization:           AEZA NETWORK FRANKFURT
+Location:               8°40′56″E, 50°6′39″N
+Map:                    https://maps.google.com/?q=50.1109221,8.6821267
+City:                   Frankfurt
+Actual Region:          [DE]Germany, [EU]Europe
+Time Zone:              Europe/Berlin
+IP Type:                 Geo-discrepant 
+2. IP Type
+Database:     IPinfo    ipregistry    ipapi     AbuseIPDB  IP2LOCATION 
+Usage:       Hosting     Hosting     Hosting   
+Company:     Hosting     Hosting   
+3. Risk Score
+Levels:         VeryLow     Low      Medium      High   VeryHigh
+SCAMALYTICS:   0|Low
+ipapi:     0.00%|VeryLow
+AbuseIPDB:                                |
+Cloudflare:    0|Low
+DB-IP:          |Low
+4. Risk Factors
+DB:  IP2LOCATION ipapi ipregistry IPQS SCAMALYTICS ipdata IPinfo IPWHOIS
+Region:   [DE]    [DE]     N/A     N/A    [DE]     N/A    [DE]    [DE]
+Proxy:     No      No      N/A     N/A     No      N/A     No      No 
+Tor:       No      No      N/A     N/A     No      N/A     No      No 
+VPN:       No      No      N/A     N/A     No      N/A     No      No 
+Server:    Yes     Yes     N/A     N/A     No      N/A     Yes     No 
+Abuser:    No      No      N/A     N/A     N/A     N/A     N/A     N/A
+Robot:     No      No      N/A     N/A     No      N/A     N/A     N/A
+5. Accessibility check for media and AI services
+Service:  TikTok   Disney+  Netflix Youtube  AmazonPV  Spotify  ChatGPT 
+Status:   Failed    Block   NF.Only    Yes     Block    Block   Failed  
+Region:                      [GB]     [GB]                              
+Type:                       Native   Native                             
+6. Email service availability and blacklist detection
+Local Port 25: Blocked
+========================================================================
+  ```
+
+  </details>
+</div>
+### 4. Проверка ограничений Instagram
+
+Анализирует фильтрации и ограничения по IP-адресу со стороны Instagram.
+
+```bash
+bash <(curl -sL https://raw.githubusercontent.com/jomertix/server-scripts/master/checkers/check_instagram.sh)
+```
+<div className="server-scripts-details">
+  <details>
+    <summary>Пример вывода</summary>
+  ```bash
+ ** Результаты проверки для IPv4 
+--------------------------------
+ ** Ваш хостинг-провайдер: 60313 (217.144.*.*) 
+ Страна: DE
+ Город: Frankfurt am Main
+ ASN: AS210644 AEZA INTERNATIONAL LTD
+
+
+============[ INSTAGRAM ТЕСТ ]============
+ Instagram Licensed Audio (C2YEAdOh9AB):->      Failed
+ Instagram Licensed Audio (Cx_DE0ZI1xc):->      Yes
+ Instagram Licensed Audio (CyERUKpIS7Q):->      Yes
+ Instagram Licensed Audio (C0Y6l7qrfi-):->      Yes
+ Instagram Licensed Audio (CrfV3RxgKYl):->      Yes
+ Instagram Licensed Audio (C2u22AltQEu):->      Yes
+=======================================
+
+
+ ** Результаты проверки для IPv6 
+--------------------------------
+ ** Ваш хостинг-провайдер: 1012 (2a0b:4140:491d:*:*) 
+
+
+============[ INSTAGRAM ТЕСТ ]============
+ Instagram Licensed Audio (C2YEAdOh9AB):->      Failed
+ Instagram Licensed Audio (Cx_DE0ZI1xc):->      Yes
+ Instagram Licensed Audio (CyERUKpIS7Q):->      Yes
+ Instagram Licensed Audio (C0Y6l7qrfi-):->      Yes
+ Instagram Licensed Audio (CrfV3RxgKYl):->      Yes
+ Instagram Licensed Audio (C2u22AltQEu):->      Yes
+=======================================
+
+Тест завершен! 
+  ```
+
+  </details>
+</div>
+### 5. Проверка доступности медиа-сервисов
+
+Диагностика подключения к популярным онлайн-сервисам и медиаплатформам.
+
+```bash
+bash <(curl -sL https://raw.githubusercontent.com/jomertix/server-scripts/refs/heads/master/checkers/service_availability.sh)
+```
+<div className="server-scripts-details">
+  <details>
+    <summary>Пример вывода</summary>
+  ```bash
+ [Тест для проверки доступности сервисов на сервере] 
+
+ ** Проверяем результаты для IPv4 
+--------------------------------
+ ** Ваш хостинг-провайдер: 60313 (217.144.*.*) 
+ Страна: DE
+ Город: Frankfurt am Main
+ ASN: AS210644 AEZA INTERNATIONAL LTD
+
+
+============[ Глобальный тест ]============
+
+ Netflix:				No
+ YouTube Premium:			Yes (Region: DE)
+ YouTube CDN:				Frankfurt 
+ Netflix Preferred CDN:			Frankfurt  
+ Spotify Registration:			No
+ ChatGPT:				Yes (Region: NL)
+ Bing Region:				DE
+ Instagram Licensed Audio:		Failed
+=======================================
+
+
+ ** Проверяем результаты для IPv6 
+--------------------------------
+ ** Ваш хостинг-провайдер: 1012 (2a0b:4140:491d:*:*) 
+
+
+============[ Глобальный тест ]============
+
+ Netflix:				No
+ YouTube Premium:			Yes (Region: GB)
+ YouTube CDN:				Frankfurt 
+ Netflix Preferred CDN:			Associated with [RETN] in [Warsaw ]
+ Spotify Registration:			No
+ ChatGPT:				Yes (Region: NL)
+ Bing Region:				NL
+ Instagram Licensed Audio:		Failed
+=======================================
+Тест завершен! 
+  ```
+
+  </details>
+</div>
+### 6. Геолокация IP по всем базам
+
+Определяет местоположение IPv4/IPv6-адреса по множеству источников: MaxMind, DB-IP, RIPE и др.
+
+```bash
+bash <(curl -sL https://github.com/vernette/ipregion/raw/master/ipregion.sh)
+```
+<div className="server-scripts-details">
+  <details>
+    <summary>Пример вывода</summary>
+  ```bash
+
+Results for IP 217.144.***.*** and 2a0b:4140:****::2
+
+                        IPv4      IPv6
+
+cloudflare.com...........DE........NL
+country.is...............DE........NL
+db-ip.com................DE
+freeipapi.com............DE........DE
+geoapify.com.............DE........DE
+geojs.io.................DE........NL
+ifconfig.co..............AM........NL
+ipapi.co.................DE........NL
+ipapi.is.................DE........DE
+ipbase.com...............DE........DE
+ipdata.co................DE
+ipinfo.io................DE........DE
+iplocation.com...........DE........NL
+ipquery.io...............DE........DE
+ipregistry.co............DE........NL
+ipwhois.io...............DE........DE
+ip.sb....................DE........NL
+maxmind.com..............DE........NL
+rdap.db.ripe.net.........DE........DE
+store.steampowered.com...DE
+apple.com................DE........DE
+youtube.com..............DE........GB
+  ```
+
+  </details>
+</div>
