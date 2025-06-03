@@ -141,7 +141,7 @@ happ://close
 happ://toggle
 ```
 
-### Добавить сервер
+### Добавить подписку
 
 ```bash
 happ://add/{SUB_URL}
