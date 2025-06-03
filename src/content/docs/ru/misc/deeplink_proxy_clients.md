@@ -46,12 +46,6 @@ sing-box://import-remote-profile?url=SUB_URL#NAME
 sub://SUB_URL
 ```
 
-## Happ
-
-```bash
-happ://add/SUB_URL
-```
-
 ## NekoRay
 
 ```bash
